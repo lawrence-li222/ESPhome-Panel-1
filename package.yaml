@@ -1,5 +1,6 @@
 packages: 
   device: !include device/device.yaml
+  lvgl: !include ui/lvgl.yaml
   sensors: !include sensors/office-ceiling-fan.yaml
   time: !include addon/time.yaml
   backlight: !include addon/backlight.yaml
@@ -7,4 +8,4 @@ packages:
   fonts: !include assets/fonts.yaml
   icons: !include assets/icons.yaml
   button: !include theme/button.yaml
-  lvgl: !include ui/lvgl.yaml
+  
