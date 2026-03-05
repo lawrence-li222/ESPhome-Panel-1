@@ -101,21 +101,6 @@ touchscreen:
     reset_pin: GPIO22
     interrupt_pin: GPIO21
 
-# Camera (Custom OV2640 component)
-ov2640_camera:
-  id: office_camera
-  i2c_id: bus_a
-  address: 0x30
-  jpeg_quality: 12
-  max_framerate: 5
-  frame_size: UXGA
-  data_pins: [GPIO39, GPIO38, GPIO37, GPIO36, GPIO21, GPIO19, GPIO18, GPIO17]
-  vsync_pin: GPIO46
-  href_pin: GPIO47
-  pixel_clock_pin: GPIO33
-  power_down_pin: GPIO48
-  reset_pin: GPIO40
-
 # Display
 display:
   - platform: mipi_dsi
