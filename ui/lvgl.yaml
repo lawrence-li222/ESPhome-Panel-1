@@ -21,15 +21,7 @@ lvgl:
 
   top_layer:
     widgets:
-    # ── Background image ────────────────────────────────────────────────
-      - image:
-            src: bg_office
-            width: 1024
-            height: 600
-            bg_color: 0x000000
-            bg_opa: 55%          # 0=clear, 255=solid. 140 ≈ 55% dim
-            #bg_opa: 55%           # 0%=clear, 100%=solid
-            border_width: 0
+   
       # Temperature
       - label:
           text: "-° / -°"
@@ -74,6 +66,15 @@ lvgl:
     pad_right: 5
 
     widgets:
+     # ── Background image ────────────────────────────────────────────────
+      - image:
+            src: bg_office
+            width: 1024
+            height: 600
+            bg_color: 0x000000
+            bg_opa: 55%          # 0=clear, 255=solid. 140 ≈ 55% dim
+            #bg_opa: 55%           # 0%=clear, 100%=solid
+            border_width: 0
       # ── Header ──────────────────────────────────────────────────────────
       - obj:
           align: TOP_MID
