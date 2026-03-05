@@ -1,0 +1,40 @@
+# Example configuration for OV2640 camera component
+# Place this in your device configuration
+
+ov2640_camera:
+  id: office_camera
+  i2c_id: bus_a                    # I2C bus for sensor control
+  address: 0x30                     # I2C address of OV2640
+  name: "Office Camera"
+  
+  # Camera settings
+  jpeg_quality: 12                  # JPEG compression (1-63, higher = better quality)
+  max_framerate: 5                  # Target framerate (1-30 FPS)
+  frame_size: UXGA                  # Frame size preset
+  
+  # DVP parallel interface pins
+  data_pins:                        # 8 parallel data lines (D0-D7)
+    - GPIO39
+    - GPIO38
+    - GPIO37
+    - GPIO36
+    - GPIO21
+    - GPIO19
+    - GPIO18
+    - GPIO17
+  vsync_pin: GPIO46                 # Vertical sync
+  href_pin: GPIO47                  # Horizontal reference
+  pixel_clock_pin: GPIO33           # Pixel clock
+  power_down_pin: GPIO48            # Power down control
+  reset_pin: GPIO40                 # Sensor reset
+
+# Optional: Expose camera state via Home Assistant
+api:
+  services:
+    - service: camera_snapshot
+      then:
+        - logger.log: "Camera snapshot requested"
+
+# Optional: HTTP streaming endpoint
+# Requires webdav_server or http_file_browser from external components
+# See package.yaml for availability

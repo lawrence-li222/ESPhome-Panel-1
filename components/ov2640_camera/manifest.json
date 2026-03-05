@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "documentation": "https://esphome.io",
+  "dependencies": ["i2c", "esp32"],
+  "codeowners": ["@p1ngb4ck"]
+}

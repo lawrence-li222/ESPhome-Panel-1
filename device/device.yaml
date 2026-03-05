@@ -25,6 +25,8 @@ external_components:
   - source: github://p1ngb4ck/esphome@dev
     components: [audio, binary_storage, http_file_browser, nfs_client, picture_viewer, uart, usb_host, usb_uart, usb_storage, sd_storage, smb_client, storage, transcoder, video_player, webdav_server]
     refresh: 0s
+  - source: local
+    components: [ov2640_camera]
   
 # Secondary ESP32-C6 device for connectivity
 esp32_hosted:
@@ -107,44 +109,20 @@ touchscreen:
     reset_pin: GPIO22
     interrupt_pin: GPIO21
 
-# Camera
-camera:
-  - platform: esp32_camera
-    id: office_camera
-    name: Office Camera
-    external_clock:
-      pin: GPIO46
-      frequency: 20MHz
-    i2c_pins:
-      sda: GPIO41
-      scl: GPIO40
-    data_pins: [GPIO39, GPIO38, GPIO37, GPIO36, GPIO21, GPIO19, GPIO18, GPIO17]
-    vsync_pin: GPIO46
-    href_pin: GPIO47
-    pixel_clock_pin: GPIO33
-    power_down_pin: GPIO48
-    reset_pin: GPIO40
-    frame_size: UXGA
-    jpeg_quality: 12
-    max_framerate: 5
-    contrast: 0
-    saturation: 0
-    special_effect: NONE
-    awb: true
-    aec: true
-    aec2: true
-    wb_mode: AUTO
-    ae_level: 0
-    agc_gain: AUTO
-    gainceiling: 32X
-    bpc: false
-    wpc: true
-    raw_gma: true
-    lenc: true
-    hmirror: false
-    vflip: false
-    dcw: true
-    colorbar: false
+# Camera (Custom OV2640 component)
+ov2640_camera:
+  id: office_camera
+  i2c_id: bus_a
+  address: 0x30
+  jpeg_quality: 12
+  max_framerate: 5
+  frame_size: UXGA
+  data_pins: [GPIO39, GPIO38, GPIO37, GPIO36, GPIO21, GPIO19, GPIO18, GPIO17]
+  vsync_pin: GPIO46
+  href_pin: GPIO47
+  pixel_clock_pin: GPIO33
+  power_down_pin: GPIO48
+  reset_pin: GPIO40
 
 # Display
 display:
