@@ -15,237 +15,237 @@ substitutions:
   color_subtle:     "0xAAAAAA"
   color_white:      "0xFFFFFF"
 
-  lvgl:
-    displays: my_display
-    byte_order: little_endian
+lvgl:
+  displays: my_display
+  byte_order: little_endian
 
-    top_layer:
-      widgets:
-        # Temperature
-        - label:
-            text: "-° / -°"
-            id: temperatures
-            text_font: clockbar_font
-            align: top_left
-            x: 8
-            y: 8
-            text_color: 0xFFFFFF
-        # Room Name
-        - label:
-            text: "Office"
-            id: room_name
-            text_font: montserrat_26
-            align: top_mid
-            x: 0
-            y: 8
-            text_color: 0xFFFFFF
-        # Clock
-        - label:
-            text: "--:--"
-            id: display_time
-            text_font: clockbar_font
-            align: top_right
-            x: 0
-            y: 8
-            text_align: center
-            text_color: 0xFFFFFF
-    pages:
-    - id: office_page
-      layout: 
-        type: flex
-        flex_flow: column_wrap
-        pad_row: 10
-        pad_column: 10
-      width: 100%
-      bg_color: 0x1A120B
-      bg_opa: 0%          # transparent — image widget is the bg
-      pad_top: 42
-      pad_bottom: 5
-      pad_left: 5
-      pad_right: 5
+  top_layer:
+    widgets:
+      # Temperature
+      - label:
+          text: "-° / -°"
+          id: temperatures
+          text_font: clockbar_font
+          align: top_left
+          x: 8
+          y: 8
+          text_color: 0xFFFFFF
+      # Room Name
+      - label:
+          text: "Office"
+          id: room_name
+          text_font: montserrat_26
+          align: top_mid
+          x: 0
+          y: 8
+          text_color: 0xFFFFFF
+      # Clock
+      - label:
+          text: "--:--"
+          id: display_time
+          text_font: clockbar_font
+          align: top_right
+          x: 0
+          y: 8
+          text_align: center
+          text_color: 0xFFFFFF
+  pages:
+  - id: office_page
+    layout: 
+      type: flex
+      flex_flow: column_wrap
+      pad_row: 10
+      pad_column: 10
+    width: 100%
+    bg_color: 0x1A120B
+    bg_opa: 0%          # transparent — image widget is the bg
+    pad_top: 42
+    pad_bottom: 5
+    pad_left: 5
+    pad_right: 5
 
-      widgets:
-        # ── Header ──────────────────────────────────────────────────────────
-        - obj:
-            align: TOP_MID
-            y: 0
-            width: 35%
-            height: 80
-            bg_color: ${color_header}
-            pad_all: 0
-            widgets:
-              - label:
-                  text: "Ceiling Fan Control"
-                  align: LEFT_MID
-                  x: 15
-                  text_font: montserrat_20
-                  text_color: ${color_white}
-              - obj:
-                  id: status_dot
-                  align: RIGHT_MID
-                  x: -50
-                  width: 14
-                  height: 14
-                  radius: 7
-                  bg_color: ${color_dot_off}
-              - label:
-                  id: status_label
-                  text: "OFF"
-                  align: RIGHT_MID
-                  x: -15
-                  text_font: montserrat_14
-                  text_color: ${color_subtle}
+    widgets:
+      # ── Header ──────────────────────────────────────────────────────────
+      - obj:
+          align: TOP_MID
+          y: 0
+          width: 35%
+          height: 80
+          bg_color: ${color_header}
+          pad_all: 0
+          widgets:
+            - label:
+                text: "Ceiling Fan Control"
+                align: LEFT_MID
+                x: 15
+                text_font: montserrat_20
+                text_color: ${color_white}
+            - obj:
+                id: status_dot
+                align: RIGHT_MID
+                x: -50
+                width: 14
+                height: 14
+                radius: 7
+                bg_color: ${color_dot_off}
+            - label:
+                id: status_label
+                text: "OFF"
+                align: RIGHT_MID
+                x: -15
+                text_font: montserrat_14
+                text_color: ${color_subtle}
 
-        # ── Speed readout ────────────────────────────────────────────────────
-        - label:
-            id: office_ceiling_fan_speed_label
-            text: "0%"
-            align: CENTER
-            y: -20
-            text_font: montserrat_48
-            text_color: ${color_accent}
+      # ── Speed readout ────────────────────────────────────────────────────
+      - label:
+          id: office_ceiling_fan_speed_label
+          text: "0%"
+          align: CENTER
+          y: -20
+          text_font: montserrat_48
+          text_color: ${color_accent}
 
-        - label:
-            text: "Speed"
-            align: CENTER
-            y: 40
-            text_font: montserrat_16
-            text_color: ${color_muted}
+      - label:
+          text: "Speed"
+          align: CENTER
+          y: 40
+          text_font: montserrat_16
+          text_color: ${color_muted}
 
-        # ── Slider ──────────────────────────────────────────────────────────
-        - slider:
-            id: office_ceiling_fan_slider
-            align: BOTTOM_MID
-            y: -90
-            width: 50%
-            height: 12
-            min_value: 0
-            max_value: 100
-            value: 0
-            bg_color: ${color_track}
+      # ── Slider ──────────────────────────────────────────────────────────
+      - slider:
+          id: office_ceiling_fan_slider
+          align: BOTTOM_MID
+          y: -90
+          width: 50%
+          height: 12
+          min_value: 0
+          max_value: 100
+          value: 0
+          bg_color: ${color_track}
+          radius: 6
+          indicator:
+            bg_color: ${color_accent}
             radius: 6
-            indicator:
-              bg_color: ${color_accent}
-              radius: 6
-            knob:
-              bg_color: ${color_knob}
-              width: 28
-              height: 28
-              radius: 14
-              shadow_width: 8
-              shadow_color: ${color_accent}
-            on_value:
-              # Updates label while dragging (visual feedback only)
-              then:
-                - lvgl.label.update:
-                    id: office_ceiling_fan_speed_label
-                    text: !lambda |-
-                      return std::to_string((int)x) + "%";
-            on_release:
-              # Sends to HA only once finger is lifted
-              then:
-                - logger.log:
-                    format: "Fan slider released: %.0f%%"
-                    args: [x]
-                - homeassistant.service:
-                    service: fan.set_percentage
-                    data:
-                      entity_id: ${office_ceiling_fan}
-                      percentage: !lambda "return (int)x;"
+          knob:
+            bg_color: ${color_knob}
+            width: 28
+            height: 28
+            radius: 14
+            shadow_width: 8
+            shadow_color: ${color_accent}
+          on_value:
+            # Updates label while dragging (visual feedback only)
+            then:
+              - lvgl.label.update:
+                  id: office_ceiling_fan_speed_label
+                  text: !lambda |-
+                    return std::to_string((int)x) + "%";
+          on_release:
+            # Sends to HA only once finger is lifted
+            then:
+              - logger.log:
+                  format: "Fan slider released: %.0f%%"
+                  args: [x]
+              - homeassistant.service:
+                  service: fan.set_percentage
+                  data:
+                    entity_id: ${office_ceiling_fan}
+                    percentage: !lambda "return (int)x;"
 
-        # ── Preset buttons (Low / Med / High) ────────────────────────────────
-        - obj:
-            align: BOTTOM_MID
-            y: -40
-            width: 50%
-            height: 60
-            bg_color: 0x00000000
-            layout:
-              type: FLEX
-              flex_flow: ROW
-              flex_align_main: SPACE_EVENLY
-              flex_align_cross: CENTER
-            widgets:
-              - button:
-                  id: btn_low
-                  width: 60
-                  height: 32
-                  bg_color: ${color_btn_preset}
-                  radius: 16
-                  widgets:
-                    - label:
-                        text: "Low"
-                        text_font: montserrat_14
-                  on_click:
-                    then:
-                      - homeassistant.service:
-                          service: fan.set_percentage
-                          data:
-                            entity_id: ${office_ceiling_fan}
-                            percentage: "33"
+      # ── Preset buttons (Low / Med / High) ────────────────────────────────
+      - obj:
+          align: BOTTOM_MID
+          y: -40
+          width: 50%
+          height: 60
+          bg_color: 0x00000000
+          layout:
+            type: FLEX
+            flex_flow: ROW
+            flex_align_main: SPACE_EVENLY
+            flex_align_cross: CENTER
+          widgets:
+            - button:
+                id: btn_low
+                width: 60
+                height: 32
+                bg_color: ${color_btn_preset}
+                radius: 16
+                widgets:
+                  - label:
+                      text: "Low"
+                      text_font: montserrat_14
+                on_click:
+                  then:
+                    - homeassistant.service:
+                        service: fan.set_percentage
+                        data:
+                          entity_id: ${office_ceiling_fan}
+                          percentage: "33"
 
-              - button:
-                  id: btn_med
-                  width: 60
-                  height: 32
-                  bg_color: ${color_btn_preset}
-                  radius: 16
-                  widgets:
-                    - label:
-                        text: "Med"
-                        text_font: montserrat_14
-                  on_click:
-                    then:
-                      - homeassistant.service:
-                          service: fan.set_percentage
-                          data:
-                            entity_id: ${office_ceiling_fan}
-                            percentage: "66"
+            - button:
+                id: btn_med
+                width: 60
+                height: 32
+                bg_color: ${color_btn_preset}
+                radius: 16
+                widgets:
+                  - label:
+                      text: "Med"
+                      text_font: montserrat_14
+                on_click:
+                  then:
+                    - homeassistant.service:
+                        service: fan.set_percentage
+                        data:
+                          entity_id: ${office_ceiling_fan}
+                          percentage: "66"
 
-              - button:
-                  id: btn_high
-                  width: 60
-                  height: 32
-                  bg_color: ${color_btn_preset}
-                  radius: 16
-                  widgets:
-                    - label:
-                        text: "High"
-                        text_font: montserrat_14
-                  on_click:
-                    then:
-                      - homeassistant.service:
-                          service: fan.set_percentage
-                          data:
-                            entity_id: ${office_ceiling_fan}
-                            percentage: "100"
+            - button:
+                id: btn_high
+                width: 60
+                height: 32
+                bg_color: ${color_btn_preset}
+                radius: 16
+                widgets:
+                  - label:
+                      text: "High"
+                      text_font: montserrat_14
+                on_click:
+                  then:
+                    - homeassistant.service:
+                        service: fan.set_percentage
+                        data:
+                          entity_id: ${office_ceiling_fan}
+                          percentage: "100"
 
-        # ── ON / OFF toggle ──────────────────────────────────────────────────
-        - button:
-            id: btn_toggle
-            align: BOTTOM_MID
-            y: -5
-            width: 120
-            height: 36
-            bg_color: ${color_btn_on}
-            radius: 18
-            widgets:
-              - label:
-                  id: toggle_label
-                  text: "  TURN ON"
-                  text_font: montserrat_14
-            on_click:
-              then:
-                - if:
-                    condition:
-                      binary_sensor.is_on: ha_office_fan_state
-                    then:
-                      - homeassistant.service:
-                          service: fan.turn_off
-                          data:
-                            entity_id: ${office_ceiling_fan}
-                    else:
-                      - homeassistant.service:
-                          service: fan.turn_on
-                          data:
-                            entity_id: ${office_ceiling_fan}
+      # ── ON / OFF toggle ──────────────────────────────────────────────────
+      - button:
+          id: btn_toggle
+          align: BOTTOM_MID
+          y: -5
+          width: 120
+          height: 36
+          bg_color: ${color_btn_on}
+          radius: 18
+          widgets:
+            - label:
+                id: toggle_label
+                text: "  TURN ON"
+                text_font: montserrat_14
+          on_click:
+            then:
+              - if:
+                  condition:
+                    binary_sensor.is_on: ha_office_ceiling_fan_state
+                  then:
+                    - homeassistant.service:
+                        service: fan.turn_off
+                        data:
+                          entity_id: ${office_ceiling_fan}
+                  else:
+                    - homeassistant.service:
+                        service: fan.turn_on
+                        data:
+                          entity_id: ${office_ceiling_fan}
