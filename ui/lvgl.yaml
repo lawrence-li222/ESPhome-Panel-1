@@ -67,7 +67,7 @@ lvgl:
 
     widgets:
      # ── Background image ────────────────────────────────────────────────
-      - image:
+      - bg_image:
             src: bg_office
             width: 1024
             height: 600
