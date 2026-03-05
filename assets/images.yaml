@@ -1,5 +1,6 @@
 image:
   - file: https://raw.githubusercontent.com/lawrence-li222/ESPhome-Panel-1/main/assets/images/bgoffice.png
+    id: bg_office
     type: RGB565
     resize: 1024X600
     byte_order: little_endian
