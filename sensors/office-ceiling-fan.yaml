@@ -22,13 +22,14 @@ sensor:
             value: !lambda 'return x;'
         - lvgl.label.update:
             id: office_ceiling_fan_speed_label
-            text: !lambda 'return "Fan Speed: " + to_string((int)x) + "%";'
+            text: !lambda |-
+              return std::to_string((int)x) + "%";
 
 binary_sensor:
   # Receives fan on/off state from HA
   - platform: homeassistant
     id: ha_office_ceiling_fan_state
-    entity_id: ${office_fan_entity}
+    entity_id: ${office_ceiling_fan}
     on_state:
       then:
         - if:
