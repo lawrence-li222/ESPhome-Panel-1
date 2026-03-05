@@ -107,7 +107,9 @@ lvgl:
           y: -20
           text_font: montserrat_48
           text_color: ${color_accent}
-          shadow_width: 2
+          bg_color: 0x000000
+          bg_opa: 50%
+          shadow_width: 4
           shadow_color: ${color_shadow}
 
       - label:
