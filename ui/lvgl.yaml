@@ -150,7 +150,7 @@ substitutions:
                 - homeassistant.service:
                     service: fan.set_percentage
                     data:
-                      entity_id: ${office_fan_entity}
+                      entity_id: ${office_ceiling_fan}
                       percentage: !lambda "return (int)x;"
 
         # ── Preset buttons (Low / Med / High) ────────────────────────────────
@@ -181,7 +181,7 @@ substitutions:
                       - homeassistant.service:
                           service: fan.set_percentage
                           data:
-                            entity_id: ${office_fan_entity}
+                            entity_id: ${office_ceiling_fan}
                             percentage: "33"
 
               - button:
@@ -199,7 +199,7 @@ substitutions:
                       - homeassistant.service:
                           service: fan.set_percentage
                           data:
-                            entity_id: ${office_fan_entity}
+                            entity_id: ${office_ceiling_fan}
                             percentage: "66"
 
               - button:
@@ -217,7 +217,7 @@ substitutions:
                       - homeassistant.service:
                           service: fan.set_percentage
                           data:
-                            entity_id: ${office_fan_entity}
+                            entity_id: ${office_ceiling_fan}
                             percentage: "100"
 
         # ── ON / OFF toggle ──────────────────────────────────────────────────
@@ -243,9 +243,9 @@ substitutions:
                       - homeassistant.service:
                           service: fan.turn_off
                           data:
-                            entity_id: ${office_fan_entity}
+                            entity_id: ${office_ceiling_fan}
                     else:
                       - homeassistant.service:
                           service: fan.turn_on
                           data:
-                            entity_id: ${office_fan_entity}
+                            entity_id: ${office_ceiling_fan}
