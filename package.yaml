@@ -1,7 +1,7 @@
 packages: 
   device: !include device/device.yaml
   sensors: !include sensors/office-ceiling-fan.yaml
-  time: !include time/time.yaml
+  time: !include addon/time.yaml
   backlight: !include addon/backlight.yaml
   images: !include assets/images.yaml
   fonts: !include assets/fonts.yaml
