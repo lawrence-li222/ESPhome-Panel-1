@@ -126,8 +126,8 @@ lvgl:
           id: office_ceiling_fan_slider
           align: BOTTOM_MID
           y: -130
-          width: 12
-          height: 300
+          width: 50%
+          height: 12
           min_value: 0
           max_value: 100
           value: 0

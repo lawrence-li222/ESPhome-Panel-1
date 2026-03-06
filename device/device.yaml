@@ -20,6 +20,12 @@ esphome:
   friendly_name: ${friendly_name}
   area: ${room}
 
+# External components
+external_components:
+  - source: github://p1ngb4ck/esphome@dev
+    components: [audio, binary_storage, http_file_browser, nfs_client, picture_viewer, uart, usb_host, usb_uart, usb_storage, sd_storage, smb_client, storage, transcoder, video_player, webdav_server]
+    refresh: 0s
+  
 # Secondary ESP32-C6 device for connectivity
 esp32_hosted:
   variant: esp32c6
@@ -93,6 +99,14 @@ i2c_device:
   - id: i2cdev4
     address: 0x40
 
+# Touchscreen
+touchscreen:
+  - platform: gt911
+    id: my_touchscreen
+    i2c_id: bus_a
+    reset_pin: GPIO22
+    interrupt_pin: GPIO21
+
 # Display
 display:
   - platform: mipi_dsi
@@ -105,4 +119,3 @@ display:
     update_interval: never
     auto_clear_enabled: false
     hsync_pulse_width: 20     # The only difference to the examples provided
-
