@@ -1,0 +1,20 @@
+esphome:
+  name: touch-panel-with-camera
+  friendly_name: Touch Panel with Camera
+  # ESP32-P4-JC1060P470
+substitutions:
+  name: touch-panel-with-camera
+  friendly_name: Touch Panel with Camera
+  room: guest-bedroom
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+    
+# Packages
+packages:
+  remote_package_files:
+    url: https://github.com/lawrence-li222/ESPhome_Panel_1/
+    file: package.yaml
+    ref: enable-sleep-mode
+    refresh: 1sec
