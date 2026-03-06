@@ -106,13 +106,3 @@ display:
     auto_clear_enabled: false
     hsync_pulse_width: 20     # The only difference to the examples provided
 
-interval:
-  - interval: 1s
-    then:
-      - if:
-          condition:
-            lambda: 'return (millis() - id(last_touch_time)) > 60000;'
-          then:
-            - lvgl.sleep:
-            - light.turn_off: display_backlight
-
