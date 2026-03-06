@@ -19,7 +19,7 @@ substitutions:
 lvgl:
   displays: my_display
   byte_order: little_endian
-  sleep_mode: false
+  sleep_mode: true
 
   top_layer:
     widgets:
