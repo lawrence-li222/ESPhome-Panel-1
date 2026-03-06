@@ -93,6 +93,11 @@ i2c_device:
   - id: i2cdev4
     address: 0x40
 
+globals:
+  - id: last_touch_time
+    type: uint32
+    initial_value: !lambda 'return millis();'
+
 # Touchscreen
 touchscreen:
   - platform: gt911
@@ -100,6 +105,13 @@ touchscreen:
     i2c_id: bus_a
     reset_pin: GPIO22
     interrupt_pin: GPIO21
+    on_touch:
+      then:
+        - globals.set:
+            id: last_touch_time
+            value: !lambda 'return millis();'
+        - lvgl.wake:
+        - light.turn_on: display_backlight
 
 # Display
 display:
@@ -113,4 +125,14 @@ display:
     update_interval: never
     auto_clear_enabled: false
     hsync_pulse_width: 20     # The only difference to the examples provided
+
+interval:
+  - interval: 1s
+    then:
+      - if:
+          condition:
+            lambda: 'return (millis() - id(last_touch_time)) > 60000;'
+          then:
+            - lvgl.sleep:
+            - light.turn_off: display_backlight
 
